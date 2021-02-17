@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang = "en">
+<head>
+<title>Vocabulary</title>
+<meta charset = "utf-8">
+<script>
+function checkGuess(guess) {
+var answers = ["red",
+			"green",
+			"blue"];
+var index = Math.floor(Math.random()*answers.length);
+if (guess == answers[index]) {
+displayMessage("You're right! I was thinking of "+ answers[index]);
+}else{
+displayMessage ("Sorry, I was thinking of "+ answers[index]);
+}
+};
+function displayMessage (msg) {
+		var result = document.getElementById("result");
+		result.innerHTML = msg;
+	};
+function handleAddButton() {
+	var guessInput = document.getElementById("guess");
+	var guess = guessInput.value;
+
+	checkGuess(guess);
+	guessInput.value = "";
+
+};
+
+window.onload = init;
+function init() {
+	var addButton = document.getElementById("addButton");
+	addButton.onclick = handleAddButton;
+	};
+</script>
+<body>
+<form>
+<input type = "text" id = "guess" placeholder = "red, green or blue">
+<input type = "button" id = "addButton" value = "Add Guess">
+</form>
+<ul id = "result">
+</ul>
+</body>
+</html>
